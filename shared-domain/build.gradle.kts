@@ -24,5 +24,5 @@ kotlin {
 }
 
 android {
-    namespace = "dev.sdkforge.template.domain"
+    namespace = "dev.sdkforge.camera.domain"
 }
