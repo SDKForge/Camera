@@ -12,7 +12,7 @@ plugins {
 
 kotlin {
     androidLibrary {
-        namespace = "dev.sdkforge.template.core"
+        namespace = "dev.sdkforge.camera.core"
     }
 
     sourceSets {
