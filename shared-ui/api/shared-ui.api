@@ -1,0 +1,76 @@
+public final class dev/sdkforge/camera/ui/CameraConfig {
+	public static final field $stable I
+	public fun <init> ()V
+	public fun <init> (Ljava/util/Set;ZZLdev/sdkforge/camera/ui/Facing;)V
+	public synthetic fun <init> (Ljava/util/Set;ZZLdev/sdkforge/camera/ui/Facing;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/Set;
+	public final fun component2 ()Z
+	public final fun component3 ()Z
+	public final fun component4 ()Ldev/sdkforge/camera/ui/Facing;
+	public final fun copy (Ljava/util/Set;ZZLdev/sdkforge/camera/ui/Facing;)Ldev/sdkforge/camera/ui/CameraConfig;
+	public static synthetic fun copy$default (Ldev/sdkforge/camera/ui/CameraConfig;Ljava/util/Set;ZZLdev/sdkforge/camera/ui/Facing;ILjava/lang/Object;)Ldev/sdkforge/camera/ui/CameraConfig;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCameraFacing ()Ldev/sdkforge/camera/ui/Facing;
+	public final fun getEnableTorch ()Z
+	public final fun getFormats ()Ljava/util/Set;
+	public final fun getUseHapticFeedback ()Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class dev/sdkforge/camera/ui/CameraController {
+	public static final field $stable I
+	public fun <init> ()V
+	public abstract fun getCameraState ()Ldev/sdkforge/camera/ui/CameraState;
+	public abstract fun getScannedResults ()Lkotlinx/coroutines/flow/Flow;
+}
+
+public abstract interface class dev/sdkforge/camera/ui/CameraState {
+	public abstract fun getHasCameraPermission ()Z
+}
+
+public final class dev/sdkforge/camera/ui/CameraView_androidKt {
+	public static final fun CameraView (Ldev/sdkforge/camera/ui/CameraController;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
+	public static final fun rememberCameraController (Ldev/sdkforge/camera/ui/CameraConfig;Landroidx/compose/runtime/Composer;II)Ldev/sdkforge/camera/ui/CameraController;
+}
+
+public final class dev/sdkforge/camera/ui/Facing : java/lang/Enum {
+	public static final field BACK Ldev/sdkforge/camera/ui/Facing;
+	public static final field FRONT Ldev/sdkforge/camera/ui/Facing;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Ldev/sdkforge/camera/ui/Facing;
+	public static fun values ()[Ldev/sdkforge/camera/ui/Facing;
+}
+
+public final class dev/sdkforge/camera/ui/Format : java/lang/Enum {
+	public static final field AZTEC Ldev/sdkforge/camera/ui/Format;
+	public static final field CODE_128 Ldev/sdkforge/camera/ui/Format;
+	public static final field CODE_39 Ldev/sdkforge/camera/ui/Format;
+	public static final field CODE_93 Ldev/sdkforge/camera/ui/Format;
+	public static final field DATA_MATRIX Ldev/sdkforge/camera/ui/Format;
+	public static final field EAN_13 Ldev/sdkforge/camera/ui/Format;
+	public static final field EAN_8 Ldev/sdkforge/camera/ui/Format;
+	public static final field ITF Ldev/sdkforge/camera/ui/Format;
+	public static final field PDF417 Ldev/sdkforge/camera/ui/Format;
+	public static final field QR_CODE Ldev/sdkforge/camera/ui/Format;
+	public static final field UNKNOWN Ldev/sdkforge/camera/ui/Format;
+	public static final field UPC_E Ldev/sdkforge/camera/ui/Format;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Ldev/sdkforge/camera/ui/Format;
+	public static fun values ()[Ldev/sdkforge/camera/ui/Format;
+}
+
+public final class dev/sdkforge/camera/ui/ScanResult {
+	public static final field $stable I
+	public fun <init> (Ldev/sdkforge/camera/ui/Format;Ljava/lang/String;)V
+	public final fun component1 ()Ldev/sdkforge/camera/ui/Format;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ldev/sdkforge/camera/ui/Format;Ljava/lang/String;)Ldev/sdkforge/camera/ui/ScanResult;
+	public static synthetic fun copy$default (Ldev/sdkforge/camera/ui/ScanResult;Ldev/sdkforge/camera/ui/Format;Ljava/lang/String;ILjava/lang/Object;)Ldev/sdkforge/camera/ui/ScanResult;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getFormat ()Ldev/sdkforge/camera/ui/Format;
+	public final fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
