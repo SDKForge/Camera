@@ -4,6 +4,8 @@ package dev.sdkforge.camera.ui
 
 import androidx.compose.ui.hapticfeedback.HapticFeedback
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import dev.sdkforge.camera.domain.CameraConfig
+import dev.sdkforge.camera.domain.ScanResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 

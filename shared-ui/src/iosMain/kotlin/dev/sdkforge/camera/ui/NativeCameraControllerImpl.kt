@@ -1,6 +1,7 @@
 package dev.sdkforge.camera.ui
 
 import androidx.compose.ui.hapticfeedback.HapticFeedback
+import dev.sdkforge.camera.domain.CameraConfig
 
 internal actual class NativeCameraControllerImpl(
     actual override val initialCameraState: CameraStateImpl,

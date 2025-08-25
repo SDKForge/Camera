@@ -1,5 +1,6 @@
 package dev.sdkforge.camera.ui
 
+import dev.sdkforge.camera.domain.Format
 import platform.AVFoundation.AVMetadataObjectTypeAztecCode
 import platform.AVFoundation.AVMetadataObjectTypeCode128Code
 import platform.AVFoundation.AVMetadataObjectTypeCode39Code

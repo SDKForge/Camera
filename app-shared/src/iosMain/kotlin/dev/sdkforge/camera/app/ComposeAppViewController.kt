@@ -5,9 +5,9 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.uikit.LocalUIViewController
 import androidx.compose.ui.window.ComposeUIViewController
-import dev.sdkforge.camera.ui.CameraConfig
-import dev.sdkforge.camera.ui.Facing
-import dev.sdkforge.camera.ui.Format
+import dev.sdkforge.camera.domain.CameraConfig
+import dev.sdkforge.camera.domain.Facing
+import dev.sdkforge.camera.domain.Format
 import dev.sdkforge.camera.ui.rememberCameraController
 import kotlin.experimental.ExperimentalObjCName
 import platform.AVFoundation.AVCaptureDevice

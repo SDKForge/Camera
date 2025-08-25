@@ -3,6 +3,7 @@ package dev.sdkforge.camera.ui
 import android.content.Context
 import androidx.compose.ui.hapticfeedback.HapticFeedback
 import androidx.lifecycle.LifecycleOwner
+import dev.sdkforge.camera.domain.CameraConfig
 
 internal actual class NativeCameraControllerImpl(
     context: Context,

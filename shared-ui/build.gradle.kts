@@ -14,6 +14,8 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
+                implementation(projects.sharedDomain)
+
                 implementation(compose.foundation)
                 implementation(compose.material3)
             }
