@@ -13,6 +13,9 @@ import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.barcode.common.Barcode
 import com.google.mlkit.vision.common.InputImage
+import dev.sdkforge.camera.domain.CameraConfig
+import dev.sdkforge.camera.domain.Facing
+import dev.sdkforge.camera.domain.ScanResult
 import java.util.concurrent.Executor
 
 internal actual class PlatformCameraView(

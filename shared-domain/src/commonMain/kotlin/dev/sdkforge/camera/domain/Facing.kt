@@ -1,4 +1,4 @@
-package dev.sdkforge.camera.ui
+package dev.sdkforge.camera.domain
 
 enum class Facing {
     FRONT,

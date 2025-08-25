@@ -14,9 +14,9 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import dev.sdkforge.camera.app.App
-import dev.sdkforge.camera.ui.CameraConfig
-import dev.sdkforge.camera.ui.Facing
-import dev.sdkforge.camera.ui.Format
+import dev.sdkforge.camera.domain.CameraConfig
+import dev.sdkforge.camera.domain.Facing
+import dev.sdkforge.camera.domain.Format
 import dev.sdkforge.camera.ui.rememberCameraController
 
 class MainActivity : ComponentActivity() {

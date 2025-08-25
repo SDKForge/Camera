@@ -1,5 +1,6 @@
 package dev.sdkforge.camera.ui
 
+import dev.sdkforge.camera.domain.Format
 import com.google.mlkit.vision.barcode.common.Barcode as MLBarcode
 
 internal val Format.value: Int

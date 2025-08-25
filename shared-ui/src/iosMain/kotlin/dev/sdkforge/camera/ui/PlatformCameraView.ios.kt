@@ -2,6 +2,9 @@
 
 package dev.sdkforge.camera.ui
 
+import dev.sdkforge.camera.domain.CameraConfig
+import dev.sdkforge.camera.domain.Facing
+import dev.sdkforge.camera.domain.ScanResult
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.readValue
 import platform.AVFoundation.AVCaptureAutoFocusRangeRestrictionNear

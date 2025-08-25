@@ -1,0 +1,2 @@
+org.jetbrains.kotlin:kotlin-stdlib:2.2.20-Beta2
+org.jetbrains:annotations:13.0

@@ -8,6 +8,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.viewinterop.UIKitView
+import dev.sdkforge.camera.domain.CameraConfig
 
 @Composable
 actual fun CameraView(
