@@ -1,6 +1,6 @@
 package dev.sdkforge.camera
 
-import dev.sdkforge.template.Library.VERSION
+import dev.sdkforge.camera.Library.VERSION
 
 /**
  * Library metadata and version information.

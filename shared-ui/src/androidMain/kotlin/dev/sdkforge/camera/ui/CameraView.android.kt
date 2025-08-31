@@ -11,6 +11,15 @@ import androidx.lifecycle.compose.LifecycleResumeEffect
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import dev.sdkforge.camera.domain.CameraConfig
 
+/**
+ * Android implementation of the camera view composable.
+ *
+ * This actual implementation provides Android-specific camera rendering using
+ * AndroidView to integrate with the native Android camera preview.
+ *
+ * @param cameraController The camera controller that manages camera state and scanning
+ * @param modifier Optional modifier to apply to the camera view
+ */
 @Composable
 actual fun CameraView(
     cameraController: CameraController,
@@ -44,6 +53,15 @@ actual fun CameraView(
     )
 }
 
+/**
+ * Android implementation of the camera controller factory.
+ *
+ * This actual implementation creates an Android-specific camera controller
+ * using the Android context, haptic feedback, and lifecycle owner.
+ *
+ * @param config The camera configuration settings
+ * @return A [CameraController] instance configured for Android
+ */
 @Composable
 actual fun rememberCameraController(
     config: CameraConfig,

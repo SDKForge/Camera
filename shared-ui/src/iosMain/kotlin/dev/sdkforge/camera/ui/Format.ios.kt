@@ -13,6 +13,14 @@ import platform.AVFoundation.AVMetadataObjectTypePDF417Code
 import platform.AVFoundation.AVMetadataObjectTypeQRCode
 import platform.AVFoundation.AVMetadataObjectTypeUPCECode
 
+/**
+ * Extension property to get the AVFoundation metadata object type.
+ *
+ * Maps our domain [Format] enum to the corresponding AVFoundation
+ * metadata object type strings used by the iOS barcode scanning API.
+ *
+ * @return The AVFoundation metadata object type string, or null for unknown formats
+ */
 internal val Format.value: String?
     get() = when (this) {
         Format.AZTEC -> AVMetadataObjectTypeAztecCode
@@ -29,6 +37,14 @@ internal val Format.value: String?
         else -> null
     }
 
+/**
+ * Extension property to convert AVFoundation metadata object type to domain format.
+ *
+ * Maps AVFoundation metadata object type strings back to our domain [Format] enum.
+ * Unknown formats are mapped to [Format.UNKNOWN].
+ *
+ * @return The corresponding domain [Format] enum value
+ */
 internal val String?.asFormat: Format
     get() = when (this) {
         AVMetadataObjectTypeAztecCode -> Format.AZTEC
@@ -45,4 +61,13 @@ internal val String?.asFormat: Format
         else -> Format.UNKNOWN
     }
 
+/**
+ * Extension function to convert format collection to metadata object types.
+ *
+ * Converts a collection of [Format] values to a list of AVFoundation
+ * metadata object type strings suitable for the metadata output configuration.
+ * Filters out [Format.UNKNOWN] values and null results.
+ *
+ * @return A list of AVFoundation metadata object type strings
+ */
 internal fun Collection<Format>.toMetadataObjectTypes() = mapNotNull { if (it == Format.UNKNOWN) null else it.value }
