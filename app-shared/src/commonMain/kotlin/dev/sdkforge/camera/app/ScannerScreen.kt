@@ -16,6 +16,7 @@ import androidx.compose.material.icons.filled.FlipCameraAndroid
 import androidx.compose.material.icons.filled.History
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -50,14 +51,13 @@ fun ScannerScreen(
         ButtonsOverlay(
             controller = cameraController,
             modifier = modifier.padding(top = innerPadding.calculateTopPadding()),
-            { isHistoryDialogShown = !isHistoryDialogShown },
+            onHistoryClicked = { isHistoryDialogShown = !isHistoryDialogShown },
         )
         ScansHistoryDialog(
             showDialog = isHistoryDialogShown,
             scans = scans,
-        ) {
-            isHistoryDialogShown = false
-        }
+            onDismiss = { isHistoryDialogShown = false },
+        )
     }
 }
 
@@ -76,28 +76,40 @@ fun ButtonsOverlay(
             verticalAlignment = Alignment.Top,
             modifier = modifier.fillMaxWidth(),
         ) {
-            Icon(
-                imageVector = Icons.Default.History,
-                contentDescription = "Show scans history",
-                modifier = Modifier.clickable {
+            IconButton(
+                onClick = {
                     onHistoryClicked.invoke()
                 },
-            )
-            Icon(
-                imageVector = targetIcon,
-                contentDescription = "Flash toggle",
-                modifier = Modifier.clickable {
+            ) {
+                Icon(
+                    imageVector = Icons.Default.History,
+                    contentDescription = "Show scans history",
+                    modifier = Modifier.clickable {
+                        onHistoryClicked.invoke()
+                    },
+                )
+            }
+            IconButton(
+                onClick = {
                     controller.toggleFlash()
                     isFlashOn = controller.isFlashIsOn()
                 },
-            )
-            Icon(
-                imageVector = Icons.Default.FlipCameraAndroid,
-                contentDescription = "Flip between front and back active cameras",
-                modifier = Modifier.clickable {
+            ) {
+                Icon(
+                    imageVector = targetIcon,
+                    contentDescription = "Flash toggle",
+                )
+            }
+            IconButton(
+                onClick = {
                     controller.toggleActiveCamera()
                 },
-            )
+            ) {
+                Icon(
+                    imageVector = Icons.Default.FlipCameraAndroid,
+                    contentDescription = "Flip between front and back active cameras",
+                )
+            }
         }
     }
 }

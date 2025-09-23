@@ -293,12 +293,8 @@ internal actual class PlatformCameraView(
      * Check for flash is currently on in torch mode.
      */
     internal actual fun isFlashIsOn(): Boolean {
-        val device = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
-        var isFlashOn = false
-        if (device?.isTorchAvailable() == true) {
-            isFlashOn = device.torchMode == AVCaptureTorchModeOn
-        }
-        return isFlashOn
+        val device = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo) ?: return false
+        return device.isTorchAvailable() && device.torchMode == AVCaptureTorchModeOn
     }
 
     /**
@@ -318,14 +314,16 @@ internal actual class PlatformCameraView(
             AVCaptureDevicePositionBack
         ) as? AVCaptureDeviceInput
 
-        captureSession.beginConfiguration()
-        if (captureSession.inputs.contains(frontCameraDeviceInput)) {
-            frontCameraDeviceInput?.let { captureSession.removeInput(it) }
-            backCameraDeviceInput?.let { captureSession.addInput(it) }
-        } else if (captureSession.inputs.contains(backCameraDeviceInput)) {
-            backCameraDeviceInput?.let { captureSession.removeInput(it) }
-            frontCameraDeviceInput?.let { captureSession.addInput(it) }
+        if (frontCameraDeviceInput !=null && backCameraDeviceInput != null) {
+            captureSession.beginConfiguration()
+            if (captureSession.inputs.contains(frontCameraDeviceInput)) {
+                captureSession.removeInput(frontCameraDeviceInput)
+                captureSession.addInput(backCameraDeviceInput)
+            } else if (captureSession.inputs.contains(backCameraDeviceInput)) {
+                captureSession.removeInput(backCameraDeviceInput)
+                captureSession.addInput(frontCameraDeviceInput)
+            }
+            captureSession.commitConfiguration()
         }
-        captureSession.commitConfiguration()
     }
 }
