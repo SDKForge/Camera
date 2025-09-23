@@ -40,7 +40,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
  *
  * ### SDK Configuration
  * - **Compile SDK**: 36 (Android 14)
- * - **Minimum SDK**: 21 (Android 5.0 Lollipop)
+ * - **Minimum SDK**: 23 (Android 6.0 Marshmallow)
  * - **Target SDK**: 36 (Android 14)
  *
  * ### Java Configuration
@@ -121,13 +121,13 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
 /**
  * Configures Android SDK versions for the library.
  *
- * Sets the compile SDK to 36 (Android 14) and minimum SDK to 21 (Android 5.0).
+ * Sets the compile SDK to 36 (Android 14) and minimum SDK to 23 (Android 6.0).
  */
 private fun CommonExtension<*, *, *, *, *, *>.configureSDK() {
     compileSdk = 36  // Android 14 (API level 36)
 
     defaultConfig {
-        minSdk = 21  // Android 5.0 Lollipop (API level 21)
+        minSdk = 23  // Android 5.0 Marshmallow (API level 23)
     }
 }
 

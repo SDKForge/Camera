@@ -82,7 +82,7 @@ dependencies {
 ## Compatibility
 
 - **Kotlin**: 1.9.0+
-- **Android**: API 21+
+- **Android**: API 23+
 - **iOS**: 12.0+
 - **Gradle**: 8.0+
 

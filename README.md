@@ -1,7 +1,7 @@
 # SDKForge Template
 
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.2.20--Beta2-blue.svg)](https://kotlinlang.org/)
-[![Android](https://img.shields.io/badge/Android-API%2021+-green.svg)](https://developer.android.com/)
+[![Android](https://img.shields.io/badge/Android-API%2023+-green.svg)](https://developer.android.com/)
 [![iOS](https://img.shields.io/badge/iOS-12.0+-orange.svg)](https://developer.apple.com/ios/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20iOS-lightgrey.svg)](https://kotlinlang.org/docs/multiplatform.html)
@@ -21,7 +21,7 @@ A modern Kotlin Multiplatform SDK template for building cross-platform libraries
 
 ## 📱 Supported Platforms
 
-- **Android**: API 21+ (Android 5.0+)
+- **Android**: API 23+ (Android 6.0+)
 - **iOS**: 12.0+
 - **Kotlin**: 2.2.20-Beta2+
 - **Gradle**: 8.0+
