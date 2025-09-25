@@ -127,7 +127,7 @@ private fun CommonExtension<*, *, *, *, *, *>.configureSDK() {
     compileSdk = 36  // Android 14 (API level 36)
 
     defaultConfig {
-        minSdk = 23  // Android 5.0 Marshmallow (API level 23)
+        minSdk = 21  // Android 5.0 Lollipop (API level 21)
     }
 }
 
