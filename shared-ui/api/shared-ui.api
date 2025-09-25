@@ -3,6 +3,9 @@ public abstract class dev/sdkforge/camera/ui/CameraController {
 	public fun <init> ()V
 	public abstract fun getCameraState ()Ldev/sdkforge/camera/ui/CameraState;
 	public abstract fun getScannedResults ()Lkotlinx/coroutines/flow/Flow;
+	public abstract fun isFlashIsOn ()Z
+	public abstract fun toggleActiveCamera ()V
+	public abstract fun toggleFlash ()V
 }
 
 public abstract interface class dev/sdkforge/camera/ui/CameraState {
