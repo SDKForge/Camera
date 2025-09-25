@@ -1,3 +1,5 @@
+@file:Suppress("ktlint:standard:function-expression-body")
+
 package dev.sdkforge.camera.ui
 
 import android.content.Context

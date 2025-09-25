@@ -11,13 +11,9 @@ import platform.AVFoundation.AVCaptureAutoFocusRangeRestrictionNear
 import platform.AVFoundation.AVCaptureConnection
 import platform.AVFoundation.AVCaptureDevice
 import platform.AVFoundation.AVCaptureDeviceInput
-import platform.AVFoundation.AVCaptureDevicePosition
 import platform.AVFoundation.AVCaptureDevicePositionBack
 import platform.AVFoundation.AVCaptureDevicePositionFront
-import platform.AVFoundation.AVCaptureDevicePositionUnspecified
-import platform.AVFoundation.AVCaptureDeviceType
 import platform.AVFoundation.AVCaptureDeviceTypeBuiltInTripleCamera
-import platform.AVFoundation.AVCaptureInput
 import platform.AVFoundation.AVCaptureMetadataOutput
 import platform.AVFoundation.AVCaptureMetadataOutputObjectsDelegateProtocol
 import platform.AVFoundation.AVCaptureOutput
@@ -36,7 +32,6 @@ import platform.AVFoundation.isAutoFocusRangeRestrictionSupported
 import platform.AVFoundation.isLowLightBoostSupported
 import platform.AVFoundation.isTorchAvailable
 import platform.AVFoundation.isTorchModeSupported
-import platform.AVFoundation.position
 import platform.AVFoundation.setFlashMode
 import platform.AVFoundation.torchMode
 import platform.CoreGraphics.CGRectZero
@@ -306,24 +301,26 @@ internal actual class PlatformCameraView(
         val frontCameraDeviceInput = AVCaptureDevice.defaultDeviceWithDeviceType(
             AVCaptureDeviceTypeBuiltInTripleCamera,
             AVMediaTypeVideo,
-            AVCaptureDevicePositionFront
-        ) as? AVCaptureDeviceInput
+            AVCaptureDevicePositionFront,
+        ) as? AVCaptureDeviceInput ?: return
         val backCameraDeviceInput = AVCaptureDevice.defaultDeviceWithDeviceType(
             AVCaptureDeviceTypeBuiltInTripleCamera,
             AVMediaTypeVideo,
-            AVCaptureDevicePositionBack
-        ) as? AVCaptureDeviceInput
+            AVCaptureDevicePositionBack,
+        ) as? AVCaptureDeviceInput ?: return
 
-        if (frontCameraDeviceInput !=null && backCameraDeviceInput != null) {
-            captureSession.beginConfiguration()
-            if (captureSession.inputs.contains(frontCameraDeviceInput)) {
-                captureSession.removeInput(frontCameraDeviceInput)
-                captureSession.addInput(backCameraDeviceInput)
-            } else if (captureSession.inputs.contains(backCameraDeviceInput)) {
-                captureSession.removeInput(backCameraDeviceInput)
-                captureSession.addInput(frontCameraDeviceInput)
+        captureSession.apply {
+            beginConfiguration()
+
+            if (inputs.contains(frontCameraDeviceInput)) {
+                removeInput(frontCameraDeviceInput)
+                addInput(backCameraDeviceInput)
+            } else if (inputs.contains(backCameraDeviceInput)) {
+                removeInput(backCameraDeviceInput)
+                addInput(frontCameraDeviceInput)
             }
-            captureSession.commitConfiguration()
+
+            commitConfiguration()
         }
     }
 }

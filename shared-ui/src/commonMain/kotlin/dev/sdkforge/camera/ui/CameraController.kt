@@ -1,4 +1,4 @@
-@file:Suppress("ktlint:standard:class-signature")
+@file:Suppress("ktlint:standard:class-signature", "ktlint:standard:function-expression-body")
 
 package dev.sdkforge.camera.ui
 
