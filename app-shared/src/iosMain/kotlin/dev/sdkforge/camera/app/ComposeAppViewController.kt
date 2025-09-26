@@ -2,12 +2,15 @@ package dev.sdkforge.camera.app
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateSetOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.uikit.LocalUIViewController
 import androidx.compose.ui.window.ComposeUIViewController
 import dev.sdkforge.camera.domain.CameraConfig
 import dev.sdkforge.camera.domain.Facing
 import dev.sdkforge.camera.domain.Format
+import dev.sdkforge.camera.domain.ScanResult
 import dev.sdkforge.camera.ui.rememberCameraController
 import kotlin.experimental.ExperimentalObjCName
 import platform.AVFoundation.AVCaptureDevice
@@ -37,18 +40,28 @@ fun ComposeAppViewController() = ComposeUIViewController(
             cameraFacing = Facing.BACK,
         ),
     )
-
+    val scans = remember { mutableStateSetOf<ScanResult>() }
     App(
         cameraController = cameraController,
+        scans = scans,
         modifier = Modifier
             .fillMaxSize(),
     )
 
     LaunchedEffect(Unit) {
         cameraController.scannedResults.collect { scanResult ->
+            val alertText = if (scans.contains(scanResult)) {
+                AppConstants.ERROR_TITLE to AppConstants.ALREADY_SCANNED_MESSAGE
+            } else {
+                if (scans.size == AppConstants.HISTORY_SCANS_MAX_LENGTH) {
+                    scans.remove(scans.first())
+                }
+                scans.add(scanResult)
+                AppConstants.SUCCESS_TITLE to "${AppConstants.SCANNED_VALUE} ${scanResult.value}"
+            }
             val alert = UIAlertController.alertControllerWithTitle(
-                title = "Scanned format: ${scanResult.format}",
-                message = "Scanned value: ${scanResult.value}",
+                title = alertText.first,
+                message = alertText.second,
                 preferredStyle = UIAlertControllerStyleAlert,
             ).apply {
                 addAction(

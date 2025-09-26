@@ -30,7 +30,9 @@ import platform.AVFoundation.automaticallyEnablesLowLightBoostWhenAvailable
 import platform.AVFoundation.defaultDeviceWithDeviceType
 import platform.AVFoundation.isAutoFocusRangeRestrictionSupported
 import platform.AVFoundation.isLowLightBoostSupported
+import platform.AVFoundation.isTorchAvailable
 import platform.AVFoundation.isTorchModeSupported
+import platform.AVFoundation.setFlashMode
 import platform.AVFoundation.torchMode
 import platform.CoreGraphics.CGRectZero
 import platform.QuartzCore.CALayer
@@ -163,7 +165,6 @@ internal actual class PlatformCameraView(
         preferFrontCamera: Boolean,
     ): AVCaptureDevice? {
         val preferredPosition = if (preferFrontCamera) AVCaptureDevicePositionFront else AVCaptureDevicePositionBack
-
         return AVCaptureDevice.defaultDeviceWithDeviceType(
             deviceType = AVCaptureDeviceTypeBuiltInTripleCamera,
             mediaType = AVMediaTypeVideo,
@@ -264,5 +265,62 @@ internal actual class PlatformCameraView(
      */
     internal actual fun onRelease() {
         captureSession.stopRunning()
+    }
+
+    /**
+     * Changes state of camera flash to opposite of current.
+     *
+     * Provides control of flash in torch mode only.
+     */
+    internal actual fun toggleFlash() {
+        val device = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
+        if (device?.isTorchAvailable() == true) {
+            val targetMode = when (device.torchMode) {
+                AVCaptureTorchModeOn -> AVCaptureTorchModeOff
+                AVCaptureTorchModeOff -> AVCaptureTorchModeOn
+                else -> AVCaptureTorchModeAuto
+            }
+            device.setFlashMode(targetMode)
+        }
+    }
+
+    /**
+     * Check for flash is currently on in torch mode.
+     */
+    internal actual fun isFlashIsOn(): Boolean {
+        val device = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo) ?: return false
+        return device.isTorchAvailable() && device.torchMode == AVCaptureTorchModeOn
+    }
+
+    /**
+     * Changes what camera is active at the moment.
+     *
+     * Provides control of what camera, frontal or back, is currently active.
+     */
+    internal actual fun toggleActiveCamera() {
+        val frontCameraDeviceInput = AVCaptureDevice.defaultDeviceWithDeviceType(
+            AVCaptureDeviceTypeBuiltInTripleCamera,
+            AVMediaTypeVideo,
+            AVCaptureDevicePositionFront,
+        ) as? AVCaptureDeviceInput ?: return
+        val backCameraDeviceInput = AVCaptureDevice.defaultDeviceWithDeviceType(
+            AVCaptureDeviceTypeBuiltInTripleCamera,
+            AVMediaTypeVideo,
+            AVCaptureDevicePositionBack,
+        ) as? AVCaptureDeviceInput ?: return
+
+        captureSession.apply {
+            beginConfiguration()
+
+            if (inputs.contains(frontCameraDeviceInput)) {
+                removeInput(frontCameraDeviceInput)
+                addInput(backCameraDeviceInput)
+            } else if (inputs.contains(backCameraDeviceInput)) {
+                removeInput(backCameraDeviceInput)
+                addInput(frontCameraDeviceInput)
+            }
+
+            commitConfiguration()
+        }
     }
 }
