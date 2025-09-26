@@ -1,4 +1,4 @@
-@file:Suppress("ktlint:standard:class-signature")
+@file:Suppress("ktlint:standard:class-signature", "ktlint:standard:function-expression-body")
 
 package dev.sdkforge.camera.ui
 
@@ -8,6 +8,7 @@ import dev.sdkforge.camera.domain.CameraConfig
 import dev.sdkforge.camera.domain.ScanResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
 
 /**
  * Platform-specific implementation of the native camera controller.
@@ -59,7 +60,7 @@ internal abstract class NativeCameraController(
      * This mutable shared flow is used internally to emit scan results
      * and can be shared with multiple collectors.
      */
-    protected val initialScannedResults: MutableSharedFlow<ScanResult> = MutableSharedFlow()
+    protected val initialScannedResults: MutableSharedFlow<ScanResult> = MutableSharedFlow(replay = 1)
 
     /**
      * Public flow of scanned results.
@@ -67,7 +68,7 @@ internal abstract class NativeCameraController(
      * This flow emits [ScanResult] objects whenever a barcode is successfully
      * scanned and decoded.
      */
-    override val scannedResults: Flow<ScanResult> = initialScannedResults
+    override val scannedResults: SharedFlow<ScanResult> = initialScannedResults
 
     /**
      * The initial camera state implementation.
@@ -138,6 +139,18 @@ internal abstract class NativeCameraController(
     override fun onRelease() {
         platformCameraView.onRelease()
     }
+
+    override fun toggleFlash() {
+        platformCameraView.toggleFlash()
+    }
+
+    override fun isFlashIsOn(): Boolean {
+        return platformCameraView.isFlashIsOn()
+    }
+
+    override fun toggleActiveCamera() {
+        platformCameraView.toggleActiveCamera()
+    }
 }
 
 /**
@@ -195,4 +208,23 @@ abstract class CameraController {
      * Implementations should properly clean up camera resources.
      */
     internal abstract fun onRelease()
+
+    /**
+     * Changes state of camera flash to opposite of current.
+     *
+     * Provides control of flash in torch mode only.
+     */
+    abstract fun toggleFlash()
+
+    /**
+     * Check for flash is currently on in torch mode.
+     */
+    abstract fun isFlashIsOn(): Boolean
+
+    /**
+     * Changes what camera is active at the moment.
+     *
+     * Provides control of what camera, frontal or back, is currently active.
+     */
+    abstract fun toggleActiveCamera()
 }

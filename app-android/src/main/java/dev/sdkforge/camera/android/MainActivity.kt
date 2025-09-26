@@ -11,12 +11,16 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateSetOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import dev.sdkforge.camera.app.App
+import dev.sdkforge.camera.app.AppConstants
 import dev.sdkforge.camera.domain.CameraConfig
 import dev.sdkforge.camera.domain.Facing
 import dev.sdkforge.camera.domain.Format
+import dev.sdkforge.camera.domain.ScanResult
 import dev.sdkforge.camera.ui.rememberCameraController
 
 class MainActivity : ComponentActivity() {
@@ -52,16 +56,25 @@ class MainActivity : ComponentActivity() {
                     cameraFacing = Facing.BACK,
                 ),
             )
-
+            val scans = remember { mutableStateSetOf<ScanResult>() }
             App(
                 cameraController = cameraController,
+                scans = scans,
                 modifier = Modifier
                     .fillMaxSize(),
             )
 
             LaunchedEffect(Unit) {
                 cameraController.scannedResults.collect { scanResult ->
-                    toast("${scanResult.format.name}; value = ${scanResult.value}")
+                    if (scans.contains(scanResult)) {
+                        toast("${AppConstants.SUCCESS_TITLE} - ${AppConstants.ALREADY_SCANNED_MESSAGE}")
+                    } else {
+                        if (scans.size == AppConstants.HISTORY_SCANS_MAX_LENGTH) {
+                            scans.remove(scans.first())
+                        }
+                        scans.add(scanResult)
+                        toast("${AppConstants.SUCCESS_TITLE} - ${AppConstants.SCANNED_VALUE} ${scanResult.value}")
+                    }
                 }
             }
 
