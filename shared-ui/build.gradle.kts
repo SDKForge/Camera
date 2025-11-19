@@ -11,6 +11,10 @@ plugins {
 }
 
 kotlin {
+    androidLibrary {
+        namespace = "dev.sdkforge.camera.ui"
+    }
+
     sourceSets {
         commonMain {
             dependencies {
@@ -35,8 +39,4 @@ kotlin {
             }
         }
     }
-}
-
-android {
-    namespace = "dev.sdkforge.camera.ui"
 }
