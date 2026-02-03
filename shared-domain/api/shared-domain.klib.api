@@ -1,0 +1,77 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <dev.sdkforge.camera:shared-domain>
+final enum class dev.sdkforge.camera.domain/Facing : kotlin/Enum<dev.sdkforge.camera.domain/Facing> { // dev.sdkforge.camera.domain/Facing|null[0]
+    enum entry BACK // dev.sdkforge.camera.domain/Facing.BACK|null[0]
+    enum entry FRONT // dev.sdkforge.camera.domain/Facing.FRONT|null[0]
+
+    final val entries // dev.sdkforge.camera.domain/Facing.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<dev.sdkforge.camera.domain/Facing> // dev.sdkforge.camera.domain/Facing.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): dev.sdkforge.camera.domain/Facing // dev.sdkforge.camera.domain/Facing.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<dev.sdkforge.camera.domain/Facing> // dev.sdkforge.camera.domain/Facing.values|values#static(){}[0]
+}
+
+final enum class dev.sdkforge.camera.domain/Format : kotlin/Enum<dev.sdkforge.camera.domain/Format> { // dev.sdkforge.camera.domain/Format|null[0]
+    enum entry AZTEC // dev.sdkforge.camera.domain/Format.AZTEC|null[0]
+    enum entry CODE_128 // dev.sdkforge.camera.domain/Format.CODE_128|null[0]
+    enum entry CODE_39 // dev.sdkforge.camera.domain/Format.CODE_39|null[0]
+    enum entry CODE_93 // dev.sdkforge.camera.domain/Format.CODE_93|null[0]
+    enum entry DATA_MATRIX // dev.sdkforge.camera.domain/Format.DATA_MATRIX|null[0]
+    enum entry EAN_13 // dev.sdkforge.camera.domain/Format.EAN_13|null[0]
+    enum entry EAN_8 // dev.sdkforge.camera.domain/Format.EAN_8|null[0]
+    enum entry ITF // dev.sdkforge.camera.domain/Format.ITF|null[0]
+    enum entry PDF417 // dev.sdkforge.camera.domain/Format.PDF417|null[0]
+    enum entry QR_CODE // dev.sdkforge.camera.domain/Format.QR_CODE|null[0]
+    enum entry UNKNOWN // dev.sdkforge.camera.domain/Format.UNKNOWN|null[0]
+    enum entry UPC_E // dev.sdkforge.camera.domain/Format.UPC_E|null[0]
+
+    final val entries // dev.sdkforge.camera.domain/Format.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<dev.sdkforge.camera.domain/Format> // dev.sdkforge.camera.domain/Format.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): dev.sdkforge.camera.domain/Format // dev.sdkforge.camera.domain/Format.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<dev.sdkforge.camera.domain/Format> // dev.sdkforge.camera.domain/Format.values|values#static(){}[0]
+}
+
+final class dev.sdkforge.camera.domain/CameraConfig { // dev.sdkforge.camera.domain/CameraConfig|null[0]
+    constructor <init>(kotlin.collections/Set<dev.sdkforge.camera.domain/Format> = ..., kotlin/Boolean = ..., kotlin/Boolean = ..., dev.sdkforge.camera.domain/Facing = ...) // dev.sdkforge.camera.domain/CameraConfig.<init>|<init>(kotlin.collections.Set<dev.sdkforge.camera.domain.Format>;kotlin.Boolean;kotlin.Boolean;dev.sdkforge.camera.domain.Facing){}[0]
+
+    final val cameraFacing // dev.sdkforge.camera.domain/CameraConfig.cameraFacing|{}cameraFacing[0]
+        final fun <get-cameraFacing>(): dev.sdkforge.camera.domain/Facing // dev.sdkforge.camera.domain/CameraConfig.cameraFacing.<get-cameraFacing>|<get-cameraFacing>(){}[0]
+    final val enableTorch // dev.sdkforge.camera.domain/CameraConfig.enableTorch|{}enableTorch[0]
+        final fun <get-enableTorch>(): kotlin/Boolean // dev.sdkforge.camera.domain/CameraConfig.enableTorch.<get-enableTorch>|<get-enableTorch>(){}[0]
+    final val formats // dev.sdkforge.camera.domain/CameraConfig.formats|{}formats[0]
+        final fun <get-formats>(): kotlin.collections/Set<dev.sdkforge.camera.domain/Format> // dev.sdkforge.camera.domain/CameraConfig.formats.<get-formats>|<get-formats>(){}[0]
+    final val useHapticFeedback // dev.sdkforge.camera.domain/CameraConfig.useHapticFeedback|{}useHapticFeedback[0]
+        final fun <get-useHapticFeedback>(): kotlin/Boolean // dev.sdkforge.camera.domain/CameraConfig.useHapticFeedback.<get-useHapticFeedback>|<get-useHapticFeedback>(){}[0]
+
+    final fun component1(): kotlin.collections/Set<dev.sdkforge.camera.domain/Format> // dev.sdkforge.camera.domain/CameraConfig.component1|component1(){}[0]
+    final fun component2(): kotlin/Boolean // dev.sdkforge.camera.domain/CameraConfig.component2|component2(){}[0]
+    final fun component3(): kotlin/Boolean // dev.sdkforge.camera.domain/CameraConfig.component3|component3(){}[0]
+    final fun component4(): dev.sdkforge.camera.domain/Facing // dev.sdkforge.camera.domain/CameraConfig.component4|component4(){}[0]
+    final fun copy(kotlin.collections/Set<dev.sdkforge.camera.domain/Format> = ..., kotlin/Boolean = ..., kotlin/Boolean = ..., dev.sdkforge.camera.domain/Facing = ...): dev.sdkforge.camera.domain/CameraConfig // dev.sdkforge.camera.domain/CameraConfig.copy|copy(kotlin.collections.Set<dev.sdkforge.camera.domain.Format>;kotlin.Boolean;kotlin.Boolean;dev.sdkforge.camera.domain.Facing){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // dev.sdkforge.camera.domain/CameraConfig.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // dev.sdkforge.camera.domain/CameraConfig.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // dev.sdkforge.camera.domain/CameraConfig.toString|toString(){}[0]
+}
+
+final class dev.sdkforge.camera.domain/ScanResult { // dev.sdkforge.camera.domain/ScanResult|null[0]
+    constructor <init>(dev.sdkforge.camera.domain/Format, kotlin/String?) // dev.sdkforge.camera.domain/ScanResult.<init>|<init>(dev.sdkforge.camera.domain.Format;kotlin.String?){}[0]
+
+    final val format // dev.sdkforge.camera.domain/ScanResult.format|{}format[0]
+        final fun <get-format>(): dev.sdkforge.camera.domain/Format // dev.sdkforge.camera.domain/ScanResult.format.<get-format>|<get-format>(){}[0]
+    final val value // dev.sdkforge.camera.domain/ScanResult.value|{}value[0]
+        final fun <get-value>(): kotlin/String? // dev.sdkforge.camera.domain/ScanResult.value.<get-value>|<get-value>(){}[0]
+
+    final fun component1(): dev.sdkforge.camera.domain/Format // dev.sdkforge.camera.domain/ScanResult.component1|component1(){}[0]
+    final fun component2(): kotlin/String? // dev.sdkforge.camera.domain/ScanResult.component2|component2(){}[0]
+    final fun copy(dev.sdkforge.camera.domain/Format = ..., kotlin/String? = ...): dev.sdkforge.camera.domain/ScanResult // dev.sdkforge.camera.domain/ScanResult.copy|copy(dev.sdkforge.camera.domain.Format;kotlin.String?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // dev.sdkforge.camera.domain/ScanResult.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // dev.sdkforge.camera.domain/ScanResult.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // dev.sdkforge.camera.domain/ScanResult.toString|toString(){}[0]
+}

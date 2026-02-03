@@ -1,0 +1,31 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <dev.sdkforge.camera:shared-ui>
+abstract interface dev.sdkforge.camera.ui/CameraState { // dev.sdkforge.camera.ui/CameraState|null[0]
+    abstract val hasCameraPermission // dev.sdkforge.camera.ui/CameraState.hasCameraPermission|{}hasCameraPermission[0]
+        abstract fun <get-hasCameraPermission>(): kotlin/Boolean // dev.sdkforge.camera.ui/CameraState.hasCameraPermission.<get-hasCameraPermission>|<get-hasCameraPermission>(){}[0]
+}
+
+abstract class dev.sdkforge.camera.ui/CameraController { // dev.sdkforge.camera.ui/CameraController|null[0]
+    constructor <init>() // dev.sdkforge.camera.ui/CameraController.<init>|<init>(){}[0]
+
+    abstract val cameraState // dev.sdkforge.camera.ui/CameraController.cameraState|{}cameraState[0]
+        abstract fun <get-cameraState>(): dev.sdkforge.camera.ui/CameraState // dev.sdkforge.camera.ui/CameraController.cameraState.<get-cameraState>|<get-cameraState>(){}[0]
+    abstract val scannedResults // dev.sdkforge.camera.ui/CameraController.scannedResults|{}scannedResults[0]
+        abstract fun <get-scannedResults>(): kotlinx.coroutines.flow/Flow<dev.sdkforge.camera.domain/ScanResult> // dev.sdkforge.camera.ui/CameraController.scannedResults.<get-scannedResults>|<get-scannedResults>(){}[0]
+
+    abstract fun isFlashIsOn(): kotlin/Boolean // dev.sdkforge.camera.ui/CameraController.isFlashIsOn|isFlashIsOn(){}[0]
+    abstract fun toggleActiveCamera() // dev.sdkforge.camera.ui/CameraController.toggleActiveCamera|toggleActiveCamera(){}[0]
+    abstract fun toggleFlash() // dev.sdkforge.camera.ui/CameraController.toggleFlash|toggleFlash(){}[0]
+}
+
+final val dev.sdkforge.camera.ui/dev_sdkforge_camera_ui_CameraController$stableprop // dev.sdkforge.camera.ui/dev_sdkforge_camera_ui_CameraController$stableprop|#static{}dev_sdkforge_camera_ui_CameraController$stableprop[0]
+
+final fun dev.sdkforge.camera.ui/CameraView(dev.sdkforge.camera.ui/CameraController, androidx.compose.ui/Modifier?, androidx.compose.runtime/Composer?, kotlin/Int, kotlin/Int) // dev.sdkforge.camera.ui/CameraView|CameraView(dev.sdkforge.camera.ui.CameraController;androidx.compose.ui.Modifier?;androidx.compose.runtime.Composer?;kotlin.Int;kotlin.Int){}[0]
+final fun dev.sdkforge.camera.ui/dev_sdkforge_camera_ui_CameraController$stableprop_getter(): kotlin/Int // dev.sdkforge.camera.ui/dev_sdkforge_camera_ui_CameraController$stableprop_getter|dev_sdkforge_camera_ui_CameraController$stableprop_getter(){}[0]
+final fun dev.sdkforge.camera.ui/rememberCameraController(dev.sdkforge.camera.domain/CameraConfig?, androidx.compose.runtime/Composer?, kotlin/Int, kotlin/Int): dev.sdkforge.camera.ui/CameraController // dev.sdkforge.camera.ui/rememberCameraController|rememberCameraController(dev.sdkforge.camera.domain.CameraConfig?;androidx.compose.runtime.Composer?;kotlin.Int;kotlin.Int){}[0]
